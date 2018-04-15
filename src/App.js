@@ -1,10 +1,6 @@
 import React from "react";
-import Container from "./Container";
+import { CepSearchPage } from "./cep";
 
-const App = () => (
-  <Container>
-    <h1>Luizalabs Address Search App</h1>
-  </Container>
-);
+const App = () => <CepSearchPage />;
 
 export default App;
