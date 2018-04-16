@@ -1,5 +1,5 @@
 # Luizalabs CEP Search
-Application for searching CEP (Brazil postal code) addresses.
+:mag: Application for searching CEP (Brazil postal code) addresses.
 
 This application was implemented using the [Viacep](https://viacep.com.br/) service for looking up for addresses using the CEP.
 
