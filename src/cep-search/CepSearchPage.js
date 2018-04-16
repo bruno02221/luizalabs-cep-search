@@ -6,7 +6,23 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actions from "./actions";
 
-const CepSearchPage = ({ cep, searchData, updateCep, search }) => {
+const CepSearchPage = ({ cep, searchData, updateCep, search, resetSearch }) => {
+  const SearchResults = () => {
+    if (searchData.results) {
+      return (
+        <CepInfoBox
+          data={searchData.results}
+          onRequestClose={() => {
+            resetSearch();
+            updateCep(null);
+          }}
+        />
+      );
+    } else {
+      return <NoResultsContainer />;
+    }
+  };
+
   return (
     <Root>
       <CepSearchBox
@@ -15,9 +31,7 @@ const CepSearchPage = ({ cep, searchData, updateCep, search }) => {
         onRequestSearch={search}
       />
       {searchData.status === "searching" ? <SearchingContainer /> : null}
-      {searchData.status === "success" ? (
-        <SuccessContainer data={searchData.results} />
-      ) : null}
+      {searchData.status === "success" ? <SearchResults /> : null}
       {searchData.status === "failure" ? (
         <FailureContainer error={searchData.results} />
       ) : null}
@@ -32,14 +46,6 @@ const SearchingContainer = styled.section`
     content: "Searching...";
   }
 `;
-
-const SuccessContainer = ({ data }) => {
-  if (data) {
-    return <CepInfoBox data={data} />;
-  } else {
-    return <NoResultsContainer />;
-  }
-};
 
 const NoResultsContainer = styled.div`
   &::after {
@@ -60,7 +66,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateCep: cep => dispatch(actions.updateCep(cep)),
-  search: () => dispatch(actions.search())
+  search: () => dispatch(actions.search()),
+  resetSearch: () => dispatch(actions.resetSearch())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CepSearchPage);
