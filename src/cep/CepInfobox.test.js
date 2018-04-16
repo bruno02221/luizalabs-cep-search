@@ -52,4 +52,25 @@ describe("CepInfoBox", () => {
     const wrapper = shallow(<CepInfoBox data={data} />);
     expect(wrapper.find(EmbeddedMap).length).toBe(1);
   });
+
+  it("renders a close button", () => {
+    const wrapper = mount(<CepInfoBox data={data} />);
+    expect(
+      wrapper.find("button").find({
+        "aria-label": "close"
+      }).length
+    ).toBe(1);
+  });
+
+  it("calls onRequestClose when close button is clicked", () => {
+    const onRequestClose = jest.fn();
+    const wrapper = mount(
+      <CepInfoBox data={data} onRequestClose={onRequestClose} />
+    );
+    wrapper
+      .find("button")
+      .find({ "aria-label": "close" })
+      .simulate("click");
+    expect(onRequestClose.mock.calls.length).toBe(1);
+  });
 });
