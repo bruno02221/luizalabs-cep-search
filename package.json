@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "start": "node server",
+    "dev": "node server",
     "build": "NODE_ENV=production webpack-cli --config webpack/config.prod",
-    "start:prod": "npm run build && NODE_ENV=production node server"
+    "start": "npm run build && NODE_ENV=production node server"
   },
   "keywords": ["address", "cep", "search"],
   "author": "Bruno C. Couto <brunodev02221@gmail.com>",
