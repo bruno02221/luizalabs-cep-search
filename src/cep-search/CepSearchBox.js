@@ -25,6 +25,7 @@ const CepSearchBox = ({ value, onChange, onRequestSearch, invalid }) => {
             placeholder="Ex.: 14530-000"
             value={value}
             onChange={handleInputChange}
+            onKeyUp={handleInputChange}
           />
         </label>
         <Button disabled={invalid}>Pesquisar</Button>

@@ -5,6 +5,7 @@ import CepInfoBox from "../cep/CepInfoBox";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actions from "./actions";
+import * as selectors from "./selectors";
 
 const CepSearchPage = ({ cep, searchData, updateCep, search, resetSearch }) => {
   const SearchResults = () => {
@@ -29,6 +30,7 @@ const CepSearchPage = ({ cep, searchData, updateCep, search, resetSearch }) => {
         value={cep || ""}
         onChange={updateCep}
         onRequestSearch={search}
+        invalid={!selectors.isCepValid(cep)}
       />
       {searchData.status === "searching" ? <SearchingContainer /> : null}
       {searchData.status === "success" ? <SearchResults /> : null}
