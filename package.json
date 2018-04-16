@@ -4,16 +4,13 @@
   "description": "Address search by CEP (Brazil)",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "test:watch": "jest --watch",
     "start": "node server",
     "build": "NODE_ENV=production webpack-cli --config webpack/config.prod",
     "start:prod": "npm run build && NODE_ENV=production node server"
   },
-  "keywords": [
-    "address",
-    "cep",
-    "search"
-  ],
+  "keywords": ["address", "cep", "search"],
   "author": "Bruno C. Couto <brunodev02221@gmail.com>",
   "license": "MIT",
   "devDependencies": {

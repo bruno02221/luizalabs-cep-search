@@ -2,7 +2,6 @@ import React from "react";
 import Enzyme, { shallow, mount } from "enzyme";
 import EnzymeReactAdapter from "enzyme-adapter-react-16";
 import CepSearchBox from "./CepSearchBox";
-import CepInput from "../cep/CepInput";
 
 Enzyme.configure({
   adapter: new EnzymeReactAdapter()
@@ -10,7 +9,7 @@ Enzyme.configure({
 
 describe("CepSearchBox", () => {
   it("is wrapped in a form", () => {
-    const wrapper = shallow(<CepSearchBox />);
+    const wrapper = mount(<CepSearchBox />);
     expect(wrapper.find("form").length).toBe(1);
   });
 
@@ -24,9 +23,9 @@ describe("CepSearchBox", () => {
     expect(wrapper.find("label").length).toBe(1);
   });
 
-  it("renders a CepInput component", () => {
-    const wrapper = shallow(<CepSearchBox />);
-    expect(wrapper.find(CepInput).length).toBe(1);
+  it("renders an input for cep", () => {
+    const wrapper = mount(<CepSearchBox />);
+    expect(wrapper.find("input").find({ name: "input" }).length).toBe(1);
   });
 
   it("renders a search button", () => {
@@ -50,10 +49,13 @@ describe("CepSearchBox", () => {
     });
   });
 
-  it("calls onChange for every change in the CepInput", () => {
+  it("calls onChange for every change in the cep input", () => {
     const onChange = jest.fn();
     const wrapper = mount(<CepSearchBox onChange={onChange} />);
-    wrapper.find(CepInput).simulate("change");
+    wrapper
+      .find("input")
+      .find({ name: "input" })
+      .simulate("change");
     expect(onChange.mock.calls.length).toBe(1);
   });
 

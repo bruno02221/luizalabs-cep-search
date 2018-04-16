@@ -1,9 +1,9 @@
 import "normalize.css";
 import theme from "./theme";
 import base from "./base";
-import { css } from "styled-components";
+import { css, injectGlobal } from "styled-components";
 
-export default css`
+injectGlobal`
   ${theme};
   ${base};
 `;
