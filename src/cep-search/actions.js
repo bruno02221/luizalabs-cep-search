@@ -44,3 +44,7 @@ const cepSearchFailure = error => ({
   type: types.CEP_SEARCH_FAILURE,
   error
 });
+
+export const resetSearch = () => ({
+  type: types.RESET_CEP_SEARCH
+});

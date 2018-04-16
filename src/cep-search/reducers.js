@@ -19,6 +19,8 @@ export const searchStatusReducer = (state = null, action) => {
       return "success";
     case types.CEP_SEARCH_FAILURE:
       return "failure";
+    case types.RESET_CEP_SEARCH:
+      return null;
     default:
       return state;
   }
@@ -29,6 +31,7 @@ export const searchResultsReducer = (state = null, action) => {
     case types.CEP_SEARCH_REQUEST:
     case types.CEP_SEARCH_NO_RESULTS:
     case types.CEP_SEARCH_FAILURE:
+    case types.RESET_CEP_SEARCH:
       return null;
     case types.CEP_SEARCH_SUCCESS:
       return action.data;

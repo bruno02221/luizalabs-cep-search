@@ -74,4 +74,12 @@ describe("actions", () => {
       });
     });
   });
+
+  describe("resetSearch", () => {
+    it("creates RESET_CEP_SEARCH", () => {
+      expect(actions.resetSearch()).toEqual({
+        type: types.RESET_CEP_SEARCH
+      });
+    });
+  });
 });

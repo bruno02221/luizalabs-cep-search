@@ -54,6 +54,14 @@ describe("reducers", () => {
           })
         ).toEqual("failure");
       });
+
+      it("handles RESET_CEP_SEARCH", () => {
+        expect(
+          reducers.searchStatusReducer("success", {
+            type: types.RESET_CEP_SEARCH
+          })
+        ).toEqual(null);
+      });
     });
 
     describe("searchResultsReducer", () => {
@@ -95,6 +103,17 @@ describe("reducers", () => {
           reducers.searchResultsReducer(undefined, {
             type: types.CEP_SEARCH_FAILURE
           })
+        ).toEqual(null);
+      });
+
+      it("handles RESET_CEP_SEARCH", () => {
+        expect(
+          reducers.searchResultsReducer(
+            { localidade: "Miguelópolis" },
+            {
+              type: types.RESET_CEP_SEARCH
+            }
+          )
         ).toEqual(null);
       });
     });
